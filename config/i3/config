@@ -176,16 +176,27 @@ bar {
         status_command i3status
 }
 
-# Colors
+# colors
 client.focused #007fbf #007fbf #ffffff
 client.unfocused #666666 #666666 #ffffff
 client.urgent #aa0000 #990000 #ffffff
 
-# Startup programs
+# startup programs
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
 
-# Custom KeyBinds
-bindsym $mod+Control+Shift+l exec ~/.locker
+# lock screen keybind - requires the locker script to be flagged as executable
+bindsym $mod+Control+Shift+l exec ~/scripts/locker
+
+# screenshot keyBind
 bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
+
+# kill all keyBind
 bindsym $mod+Control+Shift+k focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, kill
+
+# laptop keybinds
+# volume control
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
