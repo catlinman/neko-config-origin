@@ -1,2 +1,2 @@
 #!/bin/sh
-i3lock -c 051018 
+i3lock -i ~/.i3/wallpaper.png
