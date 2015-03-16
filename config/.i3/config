@@ -183,20 +183,32 @@ client.urgent #aa0000 #990000 #ffffff
 
 # startup programs
 exec --no-startup-id nm-applet
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+exec --no-startup-id feh --bg-fill ~/.i3/wallpaper.jpg # apply the wallpaper
 
 # lock screen keybind - requires the locker script to be flagged as executable
-bindsym $mod+Control+Shift+l exec ~/scripts/locker
+bindsym $mod+Control+Shift+l exec ~/.i3/lockscreen.sh
 
-# screenshot keyBind
+# screenshot keybind
 bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
 
-# kill all keyBind
+# kill all keybind
 bindsym $mod+Control+Shift+k focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, kill
 
-# laptop keybinds
-# volume control
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+# multimedia keybinds
+# pulse audio controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -- -5% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
+# screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# touchpad controls
+bindsym XF86TouchpadToggle exec ~/.i3/toggletouchpad.sh # toggle touchpad
+
+# media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
