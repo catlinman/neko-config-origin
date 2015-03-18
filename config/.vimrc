@@ -15,7 +15,14 @@ Plugin 'gmarik/Vundle.vim'
 " plugin on GitHub repo
 "Plugin 'tpope/vim-fugitive'
 Plugin 'valloric/MatchTagAlways'
-Plugin 'valloric/YouCompleteMe'
+Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
+Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/powerline-fonts' "requires running ../install.sh - keep in mind to select one of the fonts as well
+Plugin 'kien/ctrlp.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'altercation/vim-colors-solarized'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -47,9 +54,10 @@ filetype plugin indent on    " required
 cmap w!! w !sudo tee > /dev/null %
 
 set tabstop=4
-set expandtab
+set noexpandtab
 set shiftwidth=4
 set autoindent
+set softtabstop=4
 
 syntax on
 set background=dark
@@ -64,6 +72,24 @@ let g:mta_filetypes = {
     \}
 
 highlight Pmenu ctermfg=blue ctermbg=black
-inoremap jk <Esc>
 
+inoremap jk <ESC> 
+inoremap kj <ESC>
+
+set background=dark
 set number
+set t_Co=256
+set laststatus=2
+set ttimeoutlen=50
+
+let g:airline_theme='tomorrow'
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+
+let g:solarized_termcolors=256
+colorscheme solarized
+
