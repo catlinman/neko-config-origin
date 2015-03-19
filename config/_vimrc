@@ -39,13 +39,17 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-Plugin 'valloric/MatchTagAlways'
 Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/powerline-fonts' "requires the powerline fonts to be installed and activated
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Lokaltog/powerline-fonts' "requires the powerline fonts to be installed
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'altercation/vim-colors-solarized'
+
+if has("python")
+  Plugin 'severin-lemaignan/vim-minimap'
+  "Plugin 'Valloric/YouCompleteMe'
+  Plugin 'Valloric/MatchTagAlways'
+endif
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
@@ -102,6 +106,8 @@ set guioptions-=L  "remove left-hand scroll bar
 
 set background=dark
 
+set directory=.,$TEMP
+
 syntax on
 filetype indent plugin on
 
@@ -115,7 +121,6 @@ let g:mta_filetypes = {
 
 highlight Pmenu ctermfg=blue ctermbg=black
 
-let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 
 if has('gui_running')
@@ -133,5 +138,4 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
-let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme vineko

@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'valloric/MatchTagAlways'
 Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
 Plugin 'bling/vim-airline'
@@ -21,7 +21,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Lokaltog/powerline-fonts' "requires running ../install.sh - keep in mind to select one of the fonts as well
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'severin-lemaignan/vim-minimap'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
@@ -82,7 +82,6 @@ set t_Co=256
 set laststatus=2
 set ttimeoutlen=50
 
-let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
@@ -90,6 +89,5 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
-let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme vineko
 
