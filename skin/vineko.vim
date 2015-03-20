@@ -18,12 +18,12 @@ hi Directory	    guifg=#008b8b    ctermfg=33    gui=none    cterm=none
 hi Folded	    guibg=#555555    ctermbg=239    guifg=#ffd700    ctermfg=220    gui=none    cterm=none 
 hi Function	    guifg=#ff4564    ctermfg=202    gui=none    cterm=none 
 hi Identifier	    guifg=#5cc6ff    ctermfg=52    gui=none    cterm=none 
-hi LineNr	    guifg=#ffe224    ctermfg=225    gui=none    cterm=none 
+hi LineNr	    guifg=#ffb94a    ctermfg=225    gui=none    cterm=none 
 hi MatchParen	    guifg=#ccffcc    ctermfg=252    guibg=#008b8b    ctermbg=33    gui=none    cterm=none 
 hi Normal	    guifg=#ffffff    ctermfg=231    guibg=#1a1a1a    ctermbg=234    gui=none    cterm=none 
 hi NonText	    guibg=#1a1a1a    ctermbg=234    guifg=#81bed6    ctermfg=89    gui=none    cterm=none 
 hi Number	    guifg=#5cc6ff    ctermfg=226    gui=none    cterm=none 
-hi PreProc	    guifg=#ffe224    ctermfg=202    gui=none    cterm=none 
+hi PreProc	    guifg=#ffb94a    ctermfg=202    gui=none    cterm=none 
 hi Statement	    guifg=#ff4564    ctermfg=202    gui=none    cterm=none 
 hi Special	    guifg=#fffefc    ctermfg=226    gui=none    cterm=none 
 hi SpecialKey	    guifg=#9acd32    ctermfg=247    gui=none    cterm=none 
@@ -36,4 +36,4 @@ hi Todo	    guifg=#fffefc    ctermfg=226    gui=none    cterm=none
 hi Type	    guifg=#5cc6ff    ctermfg=52    gui=none    cterm=none 
 hi Underlined	    guifg=#80a0ff    ctermfg=89    gui=underline    cterm=underline 
 hi VertSplit	    guibg=#c2bfa5     ctermbg=07    guifg=#777777    ctermfg=231    gui=none    cterm=none 
-hi Visual	    guifg=#f0e68c    ctermfg=255    guibg=#6b8e23    ctermbg=242    gui=none    cterm=none 
+hi Visual gui=none guibg=#666666

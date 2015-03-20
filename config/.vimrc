@@ -14,14 +14,17 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-Plugin 'valloric/MatchTagAlways'
-Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
 Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/powerline-fonts' "requires the powerline fonts to be installed and activated
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Lokaltog/powerline-fonts' "requires running ../install.sh - keep in mind to select one of the fonts as well
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'severin-lemaignan/vim-minimap'
+
+if has("python")
+  Plugin 'severin-lemaignan/vim-minimap'
+  Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
+  Plugin 'Valloric/MatchTagAlways'
+endif
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
@@ -53,14 +56,32 @@ filetype plugin indent on    " required
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+inoremap jk <ESC> 
+inoremap kj <ESC>
+
+map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>y
+
 set tabstop=4
 set noexpandtab
 set shiftwidth=4
 set autoindent
 set softtabstop=4
 
-syntax on
 set background=dark
+set number
+set t_Co=256
+set laststatus=2
+set ttimeoutlen=50
+set encoding=utf-8
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+
+set background=dark
+
+syntax on
 filetype indent plugin on
 
 let g:mta_filetypes = {
@@ -73,21 +94,23 @@ let g:mta_filetypes = {
 
 highlight Pmenu ctermfg=blue ctermbg=black
 
-inoremap jk <ESC> 
-inoremap kj <ESC>
-
-set background=dark
-set number
-set t_Co=256
-set laststatus=2
-set ttimeoutlen=50
-
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = "wombat"
+
+if has('gui_running')
+  set guioptions-=T  " no toolbar
+
+  if has('gui_win32')
+    set guifont=Inconsolata_for_Powerline:h12:cANSI
+  else
+    set guifont=Inconsolata\ for\ Powerline\ 12
+  endif
+endif
 
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 
 colorscheme vineko
-

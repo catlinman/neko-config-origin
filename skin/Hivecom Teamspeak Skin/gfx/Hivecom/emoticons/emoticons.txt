@@ -1,4 +1,0 @@
-cool.png = "8)"
-sad.png = ":-("
-smile.png = ":-)"
-twinkle.png = ";-)"
