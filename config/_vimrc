@@ -46,7 +46,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 
 if has("python")
-  Plugin 'severin-lemaignan/vim-minimap'
+  "Plugin 'severin-lemaignan/vim-minimap'
   "Plugin 'Valloric/YouCompleteMe'
   Plugin 'Valloric/MatchTagAlways'
 endif
@@ -126,9 +126,9 @@ if has('gui_running')
   set guioptions-=T  " no toolbar
 
   if has('gui_win32')
-    set guifont=Inconsolata_for_Powerline:h12:cANSI
+    set guifont=Inconsolata_for_Powerline:h11:cANSI
   else
-    set guifont=Inconsolata\ for\ Powerline\ 12
+    set guifont=Inconsolata\ for\ Powerline\ 11
   endif
 endif
 
