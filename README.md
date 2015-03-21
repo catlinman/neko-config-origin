@@ -10,6 +10,7 @@ A list of all the programs covered in some way can be seen below.
 	- Rainmeter layout configuration file
 	- Both Unix Vim (.vimrc) and Windows gVim (_vimrc) configuration files
 	- i3 window manager configuration files
+	- Terminator terminal profile configuration
 - Skins and Themes
 	- Subneko Sublime theme
 	- Vineko Vim color scheme
