@@ -102,9 +102,9 @@ if has('gui_running')
   set guioptions-=T  " no toolbar
 
   if has('gui_win32')
-    set guifont=Inconsolata_for_Powerline:h12:cANSI
+    set guifont=Inconsolata_for_Powerline:h9:cANSI
   else
-    set guifont=Inconsolata\ for\ Powerline\ 12
+    set guifont=Inconsolata\ for\ Powerline\ 9
   endif
 endif
 
