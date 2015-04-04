@@ -12,6 +12,10 @@ This folder mainly contains application skins and color schemes.
 
 ![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/vineko.png)
 
+**Nekoflash FlashDevelop theme**
+
+![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/nekoflash.png)
+
 **Hivecom Teamspeak skin**
 
 ![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/hivecom.png)
@@ -31,3 +35,7 @@ To install the Subneko Sublime theme simply open up Sublime and navigate to *Pre
 **Vineko installation**
 
 To install Vineko all you will need to do is to move the given file into your ~/.vim/colors/ folder. On Windows you will need to go into your main Vim installation folder. There you will also find a colors folder in which you can place the color scheme.
+
+**Nekoflash installation**
+
+In FlashDevelop navigate to *"Tools -> Select UI Theme"* and select the *fdz* package. 
