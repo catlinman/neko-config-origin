@@ -8,6 +8,6 @@ This folder contains application configurations.
 
 ![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/i3.png)
 
-**Rainmeter Enigma Layout**
+**Blender configuration**
 
-![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/rainmeter.png)
+![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/blender.png)
