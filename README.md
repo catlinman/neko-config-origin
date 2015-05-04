@@ -1,17 +1,18 @@
 # Nekoconfig #
 
-Nekoconfig is a semi important repository containing most of my public configuration files as well as application skins and syntax highlighting settings for different kinds of code editing environments.
+Nekoconfig is a semi important repository containing most of my public configuration files as well as application skins and syntax highlighting settings for different kinds of code editing environments. It also contains utility scripts I've written at some point.
 
-The repository is split into two main folders. One contains skins and syntax highlighting sheets I've made while the other contains most of my config files for various applications.
+The repository is split into three main folders. The contents of these folders can be seen below
 
-A list of all the programs covered in some way can be seen below.
-
-- Configuration
+- Configuration (config)
+	- Blender startup and configuration file
 	- Rainmeter layout configuration file
 	- Both Unix Vim (.vimrc) and Windows gVim (_vimrc) configuration files
 	- i3 window manager configuration files
 	- Terminator terminal profile configuration
-- Skins and Themes
+- Scripts (scripts)
+	- Powershell
+- Skins and Themes (skin)
 	- Subneko Sublime theme
 	- Vineko Vim color scheme
 	- Nekobeat Osu skin
