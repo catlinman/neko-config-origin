@@ -24,9 +24,13 @@ This folder mainly contains application skins and color schemes.
 
 ![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/nekobeat.png)
 
+**MonoNeko MonoDevelop theme**
+
+![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/mononeko.png)
+
 ## Additional information ##
 
-Both Nekobeat and the Hivecom Teamspeak skin have their own readme files in their given folders.
+Nekobeat, MonoNeko and the Hivecom Teamspeak skin have their own readme files in their given folders.
 
 **Subneko installation**
 
@@ -38,4 +42,4 @@ To install Vineko all you will need to do is to move the given file into your ~/
 
 **Nekoflash installation**
 
-In FlashDevelop navigate to *"Tools -> Select UI Theme"* and select the *fdz* package. 
+In FlashDevelop, navigate to *"Tools -> Select UI Theme"* and select the *fdz* package.
