@@ -2,6 +2,7 @@
 
 This folder contains scripts for the following environments:
 
+- Bash
 - Powershell
 - Window's command-line
-- Bash
+- Python (See file contents for version information)
