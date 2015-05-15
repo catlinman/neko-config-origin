@@ -3,7 +3,7 @@
 
 # Keep in mind that the formatting of the DateTime can vary. The date needs to be listed but the actual time is optional and can be formatted
 # in different ways. Example: 04/20/1999 13:42:32 or 11/27/1996 6PM. Datetime also for some reason wants the American date format when constructing
-# from a parameter but asks for the user's system date format when it receive the date via Get-Date. Not sure what's up with that.
+# from a parameter but asks for the user's system date format when it receives the date via Get-Date. Not sure what's up with that.
 
 Param(
 	[string]$path = $(Read-Host "Enter the path to the file you'd like to edit").Replace("`"",""),
