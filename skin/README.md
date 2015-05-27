@@ -16,6 +16,9 @@ This folder mainly contains application skins and color schemes.
 
 ![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/nekoflash.png)
 
+**HexCat HexChat Skin**
+![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/hexcat.png)
+
 **Hivecom Teamspeak skin**
 
 ![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/hivecom.png)
@@ -30,7 +33,7 @@ This folder mainly contains application skins and color schemes.
 
 ## Additional information ##
 
-Nekobeat, MonoNeko and the Hivecom Teamspeak skin have their own readme files in their given folders.
+HexCat, Nekobeat, MonoNeko and the Hivecom Teamspeak skin have their own readme files in their given folders.
 
 **Subneko installation**
 
