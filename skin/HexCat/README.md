@@ -1,5 +1,5 @@
 
-# Hivecom Teamspeak skin#
+# HexCat GTK2 HexChat theme #
 
 HexCat is a GTK2 theme created for use with HexChat.
 
