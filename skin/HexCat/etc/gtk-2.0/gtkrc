@@ -604,9 +604,6 @@ style "entry" {
 	# xthickness = 2
 	# ythickness = 2
 
-	# bg[SELECTED] = { 0.30, 0.35, 0.65 }
-	# fg[PRELIGHT] = "#525252"
-
 	# GtkEntry::shadow_type = GTK_SHADOW_NONE
 
 	# In the default style we set this color to white because it sets the background color for
@@ -616,7 +613,7 @@ style "entry" {
 	# Background image. Don't need to say more I think.
 	# bg_pixmap[NORMAL] = "menu_background.png"
 
-	engine"pixmap" {
+	engine "pixmap" {
 		image {
 			function	= FLAT_BOX
 			recolorable	= TRUE
