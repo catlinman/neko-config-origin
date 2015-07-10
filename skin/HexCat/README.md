@@ -3,7 +3,7 @@
 
 HexCat is a GTK2 theme created for use with HexChat.
 
-![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/hexcat.png)
+![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/hexcat.png)
 
 ## Installation ##
 

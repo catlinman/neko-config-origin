@@ -3,7 +3,7 @@
 
 This is the official skin of the Hivecom Teamspeak server. You can use it for any other server as well if you please although it should be noted that it is somewhat based on the theme of the Hivecom [website](http://hivecom.net) and might not fit with every other server you might be on in Teamspeak.
 
-![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/hivecom.png)
+![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/hivecom.png)
 
 ## Installation ##
 

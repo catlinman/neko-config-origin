@@ -6,8 +6,8 @@ This folder contains application configurations.
 
 **i3wm / Vim / Terminator configuration**
 
-![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/i3.png)
+![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/i3.png)
 
 **Blender configuration**
 
-![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/blender.png)
+![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/blender.png)

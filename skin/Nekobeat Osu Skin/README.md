@@ -5,7 +5,7 @@ Nekobeat is a skin created for the rhythm [Osu!](https://osu.ppy.sh) and is inte
 
 A screenshot of the mania and osu! game modes while using the skin can be seen below.
 
-![](https://github.com/Catlinman/Nekoconfig/blob/master/screenshots/nekobeat.png)
+![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/nekobeat.png)
 
 ## Installation ##
 

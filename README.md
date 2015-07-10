@@ -12,6 +12,7 @@ The repository is split into three main folders. The contents of these folders c
 	- Terminator terminal profile configuration
 - Scripts (scripts)
 	- Powershell
+	- Python
 - Skins and Themes (skin)
 	- Subneko Sublime theme
 	- Vineko Vim color scheme
