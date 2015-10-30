@@ -6,3 +6,4 @@ This folder contains scripts for the following environments:
 - Powershell
 - Batch
 - Python (See file contents for version information)
+- Ruby
