@@ -1,4 +1,6 @@
 
+@ECHO OFF
+
 :: Setup the Windows WiFi virtual adapter. Requires administrator privileges.
 SET /p HOTSPOTSSID = "Enter your hotspot's name: "
 SET /p PASSWORD = "Enter your hotspot's login password: "
