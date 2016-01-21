@@ -6,6 +6,7 @@
 
 IF NOT EXIST "flac.exe" (
   ECHO Please make sure that the flac binary is included in this script's folder.
+  PAUSE
   GOTO End
   )
 
