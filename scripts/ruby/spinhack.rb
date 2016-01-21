@@ -4,7 +4,7 @@ require 'Win32API' # Require the Win32API so we can alter the mouse pointer.
 
 =begin
 	Oh no! You are using global variables! Hold your horses. The reason we do this is because we're running
-	a simple script where we don't have to pay attention to our variable scope. Sure, we could wrapped this
+	a simple script where we don't have to pay attention to our variable scope. Sure, we could have wrapped this
 	all in a neat little class and felt really good about ourselves but that would just clutter further code
 	and make it less nice to read in the end. Why would you want multiple instances of this script anyway?
 	With that said, calm down and just run the damn thing. No need in getting upset. It's all good.
