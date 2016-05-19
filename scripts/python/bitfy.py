@@ -1,15 +1,13 @@
 
 """Bitfy
 Usage:
-    bitfy <command>
-          [--token=TOKEN]
-          [--url=URL]
-          [--request=URL]
-          [--file=PATH]
-          [--title=NAME]
-
-    bitfy (-h | --help)
-    bitfy (-v | --version)
+    bitfy.py --token=TOKEN
+    bitfy.py --url=URL
+    bitfy.py --request=URL
+    bitfy.py --file=PATH
+             [--title=NAME]
+    bitfy.py (-h | --help)
+    bitfy.py (-v | --version)
 
 Options:
     -h --help           Show this screen.
@@ -24,6 +22,9 @@ Options:
 
 Description:
     Takes in an input, filters out all links and converts them to bit.ly links.
+
+Requirements:
+    Python 3.4+, requests, docopt
 """
 
 import sys
@@ -31,9 +32,9 @@ import os
 import json
 import re
 
-from docopt import docopt
-
 import requests
+
+from docopt import docopt
 
 
 def cli():
@@ -53,10 +54,6 @@ def cli():
         token = f.read()
         f.close()
 
-    else:
-        print("Please specify a token before performing any commands.")
-        return
-
     if args["--url"]:
         links.append(args["--url"])
 
@@ -70,22 +67,27 @@ def cli():
 
         links = links + parse_links(r.content)
 
-    for link in links:
-        data = new_link(token, link)
+    if links:
+        if not token:
+            print("Please specify a token before performing any commands.")
+            return
 
-        if data["status_code"] != 200:
-            print("Error {} on {}: {}".format(data["status_code"], link, data["status_txt"]))
-            continue
+        for link in links:
+            data = new_link(token, link)
 
-        domain = link.split("//")[-1].split("/")[0]
+            if data["status_code"] != 200:
+                print("Error {} on {}: {}".format(data["status_code"], link, data["status_txt"]))
+                continue
 
-        if args["--title"]:
-            edit_link(token, data["data"]["url"], "{} - {}".format(args["--title"], domain))
-            print("{} - {} | {}".format(args["--title"], domain, data["data"]["url"]))
+            domain = link.split("//")[-1].split("/")[0]
 
-        else:
-            edit_link(token, data["data"]["url"], domain)
-            print("{} | {}".format(domain, data["data"]["url"]))
+            if args["--title"]:
+                edit_link(token, data["data"]["url"], "{} - {}".format(args["--title"], domain))
+                print("{} - {} | {}".format(args["--title"], domain, data["data"]["url"]))
+
+            else:
+                edit_link(token, data["data"]["url"], domain)
+                print("{} | {}".format(domain, data["data"]["url"]))
 
 
 def parse_links(data):
