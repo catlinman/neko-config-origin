@@ -1,11 +1,11 @@
 
 """Bitfy
 Usage:
-    bitfy.py --token=TOKEN
-    bitfy.py --url=URL
-    bitfy.py --request=URL
-    bitfy.py --file=PATH
-             [--title=NAME]
+    bitfy.py --token=TOKEN [--title=NAME]
+    bitfy.py --url=URL [--title=NAME]
+    bitfy.py --request=URL [--title=NAME]
+    bitfy.py --file=PATH [--title=NAME]
+
     bitfy.py (-h | --help)
     bitfy.py (-v | --version)
 
