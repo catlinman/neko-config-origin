@@ -32,7 +32,7 @@ if __name__ == "__main__":
             print('\nMissing required URL argument')
             sys.exit(2)
 
-        if not "http://" in url and not "https://" in url:
+        if "http://" not in url and "https://" not in url:
             print('\n%s is not a valid URL' % url)
             sys.exit(2)
 
