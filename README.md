@@ -1,8 +1,9 @@
+
 # Nekoconfig #
 
 Nekoconfig is a semi important repository containing most of my public configuration files as well as application skins and syntax highlighting settings for different kinds of code editing environments. It also contains utility scripts I've written at some point.
 
-The repository is split into three main folders. The contents of these folders can be seen below
+The repository is split into four main folders. The contents of these folders can be seen below
 
 - Configuration (config)
 	- Blender startup and configuration file
@@ -10,9 +11,18 @@ The repository is split into three main folders. The contents of these folders c
 	- Both Unix Vim (.vimrc) and Windows gVim (_vimrc) configuration files
 	- i3 window manager configuration files
 	- Terminator terminal profile configuration
+	- Postfix, Dovecot, SpamAssassin, DKIM & DMARC
+	- LetsEncrypt quick setups
+
+
 - Scripts (scripts)
+	- batch
 	- Powershell
 	- Python
+	- PHP (Shocky IRC bot)
+	- Ruby
+
+
 - Skins and Themes (skin)
 	- Subneko Sublime theme
 	- Vineko Vim color scheme
@@ -20,6 +30,10 @@ The repository is split into three main folders. The contents of these folders c
 	- MonoNeko MonoDevelop theme
 	- Nekobeat Osu skin
 	- Hivecom Teamspeak skin
+
+
+- Random trash and testing (garble)
+	- Won't be listing anything about this because it's not important.
 
 For a full listing as well as further information please take a look at the README.md files in the given subfolders.
 

@@ -81,7 +81,7 @@ local function moveStreaklets(dt)
 		-- Check if the position has been reached. We do fast radial approximation here.
 		if (streak.tx - streak.x)^2 + (streak.ty - streak.y)^2 < range^2 then
 			streak.tx = math.randomFloat(0, 640)
-			streak.ty = math.randomFloat(0, 480)			
+			streak.ty = math.randomFloat(0, 480)
 		end
 
 		streak.size = size - math.min(streak.size  * 0.9, math.abs(streak.dx + streak.dy) / damping)
