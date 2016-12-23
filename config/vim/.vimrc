@@ -14,7 +14,8 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Lokaltog/powerline-fonts' "requires the powerline fonts to be installed and activated
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
@@ -56,7 +57,7 @@ filetype plugin indent on    " required
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-inoremap jk <ESC> 
+inoremap jk <ESC>
 inoremap kj <ESC>
 
 map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>y

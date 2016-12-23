@@ -1,4 +1,6 @@
-nginx -s stop
+
+nginx -s stop # Stop the nginx server as it is listening on port 80 which is used by standalone verification.
+
 letsencrypt certonly --expand --allow-subset-of-names --renew-by-default -a standalone \
 	-d catlinman.com \
 	-d nekodrop.catlinman.com \
@@ -20,4 +22,9 @@ letsencrypt certonly --expand --allow-subset-of-names --renew-by-default -a stan
 	-d github.catlinman.com \
 	-d googleplus.catlinman.com \
 	-d cloud.catlinman.com
-nginx
+
+nginx # Restart the nginx server.
+
+# ZNC certificate transfer.
+cat /etc/letsencrypt/live/catlinman.com/privkey.pem > .znc/znc.pem
+cat /etc/letsencrypt/live/catlinman.com/cert.pem >> .znc/znc.pem
