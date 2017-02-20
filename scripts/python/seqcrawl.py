@@ -1,8 +1,11 @@
 
 """Seqcrawl
 Usage:
-    seqcrawl.py --url=URL --chars=CHARS --length=LENGTH [--start=START] [--end=END] [--out=OUT] [--wait=WAIT]
-
+    seqcrawl.py --url=URL --chars=CHARS --length=LENGTH
+                [--start=START]
+                [--end=END]
+                [--out=OUT]
+                [--wait=WAIT]
     seqcrawl.py (-h | --help)
     seqcrawl.py (-v | --version)
 

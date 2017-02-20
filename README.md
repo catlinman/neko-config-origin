@@ -19,7 +19,8 @@ The repository is split into four main folders. The contents of these folders ca
 
 
 - Scripts (scripts)
-	- batch
+    - Bash
+	- Batch
 	- Powershell
 	- Python
 	- PHP (Shocky IRC bot)

@@ -3,8 +3,8 @@
 This folder contains scripts for the following environments:
 
 - Bash
-- Powershell
 - Batch
+- Powershell
 - PHP (Mainly scripts for an IRC bot)
 - Python (See file contents for version information)
 - Ruby
