@@ -1,7 +1,10 @@
 
 # Nekoconfig #
 
-Nekoconfig is a semi important repository containing most of my public configuration files as well as application skins and syntax highlighting settings for different kinds of code editing environments. It also contains utility scripts I've written at some point.
+Nekoconfig is a semi important repository containing most of my public
+configuration files as well as application skins and syntax highlighting
+settings for different kinds of code editing environments. It also contains
+utility scripts I've written at some point.
 
 The repository is split into four main folders. The contents of these folders can be seen below
 
@@ -35,8 +38,12 @@ The repository is split into four main folders. The contents of these folders ca
 - Random trash and testing (garble)
 	- Won't be listing anything about this because it's not important.
 
-For a full listing as well as further information please take a look at the README.md files in the given subfolders.
+For a full listing as well as further information please take a look at the
+README.md files in the given subfolders.
 
 ## License ##
 
-There is no license. Feel free to scrap together something nice without my permission. What I do require though is that if you use the configuration files and or skins/themes in some way that I am still credited if you intend to redistribute them.
+There is no license. Feel free to scrap together something nice without my
+permission. What I do require though is that if you use the configuration files
+and or skins/themes in some way that I am still credited if you intend to
+redistribute them.

@@ -14,7 +14,7 @@ letsencrypt certonly --expand --allow-subset-of-names --renew-by-default -a stan
 	-d facebook.catlinman.com \
 	-d youtube.catlinman.com \
 	-d steam.catlinman.com \
-	-d flickr.catlinman.com \
+	-d photo.catlinman.com \
 	-d instagram.catlinman.com \
 	-d snapchat.catlinman.com \
 	-d osu.catlinman.com \
