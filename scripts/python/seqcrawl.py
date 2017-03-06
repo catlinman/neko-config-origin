@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# Python version 3.4+
 
 """Seqcrawl
 Usage:
@@ -55,7 +57,7 @@ def cli():
     out = args["--out"] or False
 
     try:
-        txt = crawl(baseurl=url, iteration=int(start), enditeration=end, setchars=chars, setlength=int(length), sleeptime=float(wait))
+        txt = crawl(baseurl=url, iteration=int(start), iteration_end=end, setchars=chars, set_length=int(length), sleep_time=float(wait))
 
         # Print information about the current execution of the script.
         print(txt)
@@ -89,14 +91,14 @@ def sizeofh(num, suffix="B"):
     return "%.1f%s%s" % (num, 'Yi', suffix)
 
 
-def generate(setchars, setlength, iteration=0):
+def generate(setchars, set_length, iteration=0):
     '''
     Generates a set length sequence of characters from an input character set
     based on an input iteration.
 
     Args:
         setchars (str): input character set to construct further sets from.
-        setlength (int): length of the character set to output and generate.
+        set_length (int): length of the character set to output and generate.
         iteration (int): current iteration of the construction algorithm.
 
     Returns:
@@ -109,13 +111,13 @@ def generate(setchars, setlength, iteration=0):
     charcount = len(setchars)
 
     # Iterate over the desired length of the output combination and generate the combination.
-    for i in range(0, setlength):
-        s = s + setchars[int((iteration / pow(charcount, setlength - i - 1)) % charcount)]
+    for i in range(0, set_length):
+        s = s + setchars[int((iteration / pow(charcount, set_length - i - 1)) % charcount)]
 
     return s
 
 
-def crawl(baseurl, setchars, setlength, iteration=0, enditeration=False, sleeptime=1.5):
+def crawl(baseurl, setchars, set_length, iteration=0, iteration_end=False, sleep_time=1.5):
     '''
     Crawls an input URL entry point by iterating over fixed length combinations
     of an input character set.
@@ -123,10 +125,10 @@ def crawl(baseurl, setchars, setlength, iteration=0, enditeration=False, sleepti
     Args:
         baseurl (str): entry point URL to base further connections off of.
         setchars (str): input character set to construct further sets from.
-        setlength (int): length of the character set to output and generate.
+        set_length (int): length of the character set to output and generate.
         iteration (int): current iteration of the construction algorithm.
-        enditeration (int): optional iteration to complete at.
-        sleeptime (number): sleep time between requests to avoid spamming.
+        iteration_end (int): optional iteration to complete at.
+        sleep_time (number): sleep time between requests to avoid spamming.
     '''
 
     totalsize = 0
@@ -136,7 +138,7 @@ def crawl(baseurl, setchars, setlength, iteration=0, enditeration=False, sleepti
     charcount = len(setchars)
 
     iteration_start = iteration
-    iteration_max = int(enditeration) if enditeration else pow(charcount, setlength)
+    iteration_max = int(iteration_end) if iteration_end else pow(charcount, set_length)
 
     # Get the current time for the timeout calculation.
     time_last = datetime.now()
@@ -148,7 +150,7 @@ def crawl(baseurl, setchars, setlength, iteration=0, enditeration=False, sleepti
             continue
 
         # Generate the current set.
-        selection = generate(setchars, setlength, iteration)
+        selection = generate(setchars, set_length, iteration)
 
         # Current iteration step.
         iteration = iteration + 1
@@ -157,8 +159,8 @@ def crawl(baseurl, setchars, setlength, iteration=0, enditeration=False, sleepti
         time_elapsed = (datetime.now() - time_last).total_seconds()
 
         # Check if enough time has past. Else, sleep until the time is up.
-        if time_elapsed < sleeptime:
-            time.sleep(sleeptime - time_elapsed)
+        if time_elapsed < sleep_time:
+            time.sleep(sleep_time - time_elapsed)
 
         # Store the current time for the next loop.
         time_last = datetime.now()

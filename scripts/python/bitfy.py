@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# Python version 3.4+
 
 """Bitfy
 Usage:
