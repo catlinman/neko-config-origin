@@ -2,7 +2,7 @@
 @ECHO OFF
 
 :: The given paths need to be setup within this file before further execution.
-SET SCENEPATH 	= "C:\[SCENE PATH\[NAME].blend"
+SET SCENEPATH 	= "C:\[SCENE PATH]\[NAME].blend"
 SET OUTPUTPATH 	= "C:\[OUTPUT PATH]"
 
 SET /p BEGIN = "Enter the starting keyframe: "
