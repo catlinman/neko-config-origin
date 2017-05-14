@@ -16,13 +16,13 @@ ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[yellow]%}●%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}●%{$reset_color%}"
 
-neko_git_branch () {
+nekoshell_git_branch () {
   ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
   ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
   echo "${ref#refs/heads/}"
 }
 
-neko_git_status() {
+nekoshell_git_status() {
   _STATUS=""
 
   # check status of files
@@ -63,9 +63,9 @@ neko_git_status() {
   echo $_STATUS
 }
 
-neko_git_prompt () {
-  local _branch=$(neko_git_branch)
-  local _status=$(neko_git_status)
+nekoshell_git_prompt () {
+  local _branch=$(nekoshell_git_branch)
+  local _status=$(nekoshell_git_status)
   local _result=""
   if [[ "${_branch}x" != "x" ]]; then
     _result="$ZSH_THEME_GIT_PROMPT_PREFIX$_branch"
@@ -109,7 +109,7 @@ get_space () {
 _1LEFT="$_USERNAME $_PATH"
 _1RIGHT="[%* @ %{%B%F{green}%}%!%{%f%k%b%}]"
 
-neko_precmd () {
+nekoshell_precmd () {
   _1SPACES=`get_space $_1LEFT $_1RIGHT`
   print
   print -rP "$_1LEFT$_1SPACES$_1RIGHT"
@@ -117,7 +117,7 @@ neko_precmd () {
 
 setopt prompt_subst
 PROMPT='> $_LIBERTY '
-RPROMPT='$(nvm_prompt_info) $(neko_git_prompt)'
+RPROMPT='$(nvm_prompt_info) $(nekoshell_git_prompt)'
 
 autoload -U add-zsh-hook
-add-zsh-hook precmd neko_precmd
+add-zsh-hook precmd nekoshell_precmd
