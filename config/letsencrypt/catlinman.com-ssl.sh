@@ -3,10 +3,8 @@
 
 certbot certonly --expand --renew-by-default --standalone \
 	-d catlinman.com \
-	-d nekodrop.catlinman.com \
 	-d www.catlinman.com \
 	-d dev.catlinman.com \
-	-d netdata.catlinman.com \
 	-d znc.catlinman.com \
 	-d cloud.catlinman.com \
 	-d ask.catlinman.com \
