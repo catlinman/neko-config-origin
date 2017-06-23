@@ -38,6 +38,51 @@ import requests
 from docopt import docopt
 
 
+def parse_links(s):
+    '''
+    Returns all links found in an input string.
+
+    Args:
+        s (str): input string to search for links in.
+    '''
+
+    return re.findall(r'(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})', str(s))
+
+
+def new_link(token, link):
+    '''
+    Creates a new Bitly link.
+
+    Args:
+        token (str): Bitly access token.
+        link (str): URL to be shortened by Bitly.
+
+    Returns:
+        Bitly status information and the returned Bitly link on success.
+    '''
+
+    r = requests.get("https://api-ssl.bitly.com/v3/shorten?access_token={}&longUrl={}".format(token, link))
+    return json.loads(r.content.decode("utf-8"))
+
+
+def edit_link(token, link, title):
+    '''
+    Edits an already existing Bitly links title.
+
+    Args:
+        token (str): Bitly access token.
+        link (str): Shortened URL to be edited by Bitly.
+        title (str): Updated Bitly link title.
+
+    Returns:
+        Bitly status information and the returned Bitly link on success.
+    '''
+
+    r = requests.get("https://api-ssl.bitly.com/v3/user/link_edit?access_token={}&link={}&edit=title&title={}".format(token, link, title))
+
+    return json.loads(r.content.decode("utf-8"))
+
+
 def cli():
     args = docopt(__doc__, version="Bitfy 0.2")
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -90,50 +135,6 @@ def cli():
                 edit_link(token, data["data"]["url"], domain)
                 print("{} | {}".format(domain, data["data"]["url"]))
 
-
-def parse_links(s):
-    '''
-    Returns all links found in an input string.
-
-    Args:
-        s (str): input string to search for links in.
-    '''
-
-    return re.findall(r'(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})', str(s))
-
-
-def new_link(token, link):
-    '''
-    Creates a new Bitly link.
-
-    Args:
-        token (str): Bitly access token.
-        link (str): URL to be shortened by Bitly.
-
-    Returns:
-        Bitly status information and the returned Bitly link on success.
-    '''
-
-    r = requests.get("https://api-ssl.bitly.com/v3/shorten?access_token={}&longUrl={}".format(token, link))
-    return json.loads(r.content.decode("utf-8"))
-
-
-def edit_link(token, link, title):
-    '''
-    Edits an already existing Bitly links title.
-
-    Args:
-        token (str): Bitly access token.
-        link (str): Shortened URL to be edited by Bitly.
-        title (str): Updated Bitly link title.
-
-    Returns:
-        Bitly status information and the returned Bitly link on success.
-    '''
-
-    r = requests.get("https://api-ssl.bitly.com/v3/user/link_edit?access_token={}&link={}&edit=title&title={}".format(token, link, title))
-
-    return json.loads(r.content.decode("utf-8"))
 
 if __name__ == "__main__":
     cli()

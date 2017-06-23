@@ -4,10 +4,10 @@
 """Seqcrawl
 Usage:
     seqcrawl.py --url=URL --chars=CHARS --length=LENGTH
-                [--start=START]
+                [--begin=BEGIN]
                 [--end=END]
                 [--out=OUT]
-                [--wait=WAIT]
+                [--sleep=SLEEP]
     seqcrawl.py (-h | --help)
     seqcrawl.py (-v | --version)
 
@@ -19,10 +19,10 @@ Options:
     -c --chars=<CHARS>      Character set to use for generation of sequences.
     -l --length=<LENGTH>    Length of generated character sequences.
 
-    -s --start<START>       Sequence generation iteration to begin at.
+    -b --begin<BEGIN>       Sequence generation iteration to begin at.
     -e --end<END>           Optional sequence generation iteration to complete at.
     -o --out<OUT>           Optional log file to write information to.
-    -w --wait<WAIT>         Optional time between crawl requests to sleep and wait.
+    -s --sleep<SLEEP>       Optional time between crawl requests to sleep.
 
 Description:
     Crawls an entry point URL using generated fixed length sequences from an
@@ -51,13 +51,13 @@ def cli():
     length = args["--length"]
 
     # Handle optional arguments.
-    start = args["--start"] or 0
+    begin = args["--begin"] or 0
     end = args["--end"] or False
-    wait = args["--wait"] or 1.5
+    sleep = args["--sleep"] or 1.5
     out = args["--out"] or False
 
     try:
-        txt = crawl(baseurl=url, iteration=int(start), iteration_end=end, setchars=chars, set_length=int(length), sleep_time=float(wait))
+        txt = crawl(baseurl=url, iteration=int(begin), iteration_end=end, setchars=chars, set_length=int(length), sleep_time=float(sleep))
 
         # Print information about the current execution of the script.
         print(txt)
@@ -137,16 +137,16 @@ def crawl(baseurl, setchars, set_length, iteration=0, iteration_end=False, sleep
     # Number of characters in the character set.
     charcount = len(setchars)
 
-    iteration_start = iteration
+    iteration_begin = iteration
     iteration_max = int(iteration_end) if iteration_end else pow(charcount, set_length)
 
     # Get the current time for the timeout calculation.
     time_last = datetime.now()
 
-    # Start iterating until we reach the max iterations.
+    # begin iterating until we reach the max iterations.
     while iteration < iteration_max:
         # Skip iterations if we are catching up.
-        if iteration < iteration_start:
+        if iteration < iteration_begin:
             continue
 
         # Generate the current set.
@@ -181,7 +181,8 @@ def crawl(baseurl, setchars, set_length, iteration=0, iteration_end=False, sleep
         totalcount = totalcount + 1
         totalsize = totalsize + len(data.content)
 
-    return "{} | Range: {} - {} | Total files: {} | Total size: {}\n".format(datetime.now(), iteration_start + 1, iteration, totalcount, sizeofh(totalsize))
+    return "{} | Range: {} - {} | Total files: {} | Total size: {}\n".format(datetime.now(), iteration_begin + 1, iteration, totalcount, sizeofh(totalsize))
+
 
 if __name__ == "__main__":
     cli()
