@@ -91,12 +91,12 @@ def cli():
     links = []
 
     if token:
-        f = open(os.path.join(script_dir, "bitfytoken"), "w")
+        f = open(os.path.join(script_dir, "token"), "w")
         f.write(args["--token"])
         f.close()
 
-    elif os.path.isfile(os.path.join(script_dir, "bitfytoken")):
-        f = open(os.path.join(script_dir, "bitfytoken"), "r")
+    elif os.path.isfile(os.path.join(script_dir, "token")):
+        f = open(os.path.join(script_dir, "token"), "r")
         token = f.read()
         f.close()
 
