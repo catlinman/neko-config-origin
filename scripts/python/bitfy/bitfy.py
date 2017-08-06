@@ -39,18 +39,18 @@ from docopt import docopt
 
 
 def parse_links(s):
-    '''
+    """
     Returns all links found in an input string.
 
     Args:
         s (str): input string to search for links in.
-    '''
+    """
 
     return re.findall(r'(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})', str(s))
 
 
 def new_link(token, link):
-    '''
+    """
     Creates a new Bitly link.
 
     Args:
@@ -59,14 +59,14 @@ def new_link(token, link):
 
     Returns:
         Bitly status information and the returned Bitly link on success.
-    '''
+    """
 
     r = requests.get("https://api-ssl.bitly.com/v3/shorten?access_token={}&longUrl={}".format(token, link))
     return json.loads(r.content.decode("utf-8"))
 
 
 def edit_link(token, link, title):
-    '''
+    """
     Edits an already existing Bitly links title.
 
     Args:
@@ -76,7 +76,7 @@ def edit_link(token, link, title):
 
     Returns:
         Bitly status information and the returned Bitly link on success.
-    '''
+    """
 
     r = requests.get("https://api-ssl.bitly.com/v3/user/link_edit?access_token={}&link={}&edit=title&title={}".format(token, link, title))
 

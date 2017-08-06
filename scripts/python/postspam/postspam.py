@@ -3,7 +3,7 @@
 
 """Postspam
 Usage:
-    postspam.py <URL> <DATA>
+    postspam.py <url> <path>
                 [--count=COUNT]
                 [--sleep=SLEEP]
                 [--random=RANDOM]
@@ -11,15 +11,12 @@ Usage:
     postspam.py (-v | --version)
 
 Options:
-    -h --help           Show this screen.
-    -v --version        Show version.
+    -h --help                   Show this screen.
+    -v --version                Show version.
 
-    -u --url=<URL>          Entry point URL to use.
-    -d --data=<DATA>        Input data CSV file to work with.
-
-    -c --count<COUNT>       Total amount of requests to make.
-    -s --sleep<SLEEP>       Optional time between requests to sleep.
-    -r --random<RANDOM>     Percentage of sleep time to randomly select from.
+    -c=NUMBER, --count=NUMBER   Total amount of requests to make.
+    -s=NUMBER, --sleep=NUMBER   Optional time between requests to sleep.
+    -r=NUMBER, --random=NUMBER  Percentage of sleep time to randomly select from.
 
 Description:
     Makes POST requests to a given URL with randomized field selection data
@@ -42,7 +39,7 @@ from docopt import docopt
 
 
 def loadcsv(filename):
-    '''
+    """
     Reads an input CSV file.
 
     Args:
@@ -50,7 +47,7 @@ def loadcsv(filename):
 
     Returns:
         List containing all rows from the CSV file without headers.
-    '''
+    """
 
     with open(filename, "r", encoding="utf-8") as f:
         return list(filter(None, list(csv.reader(f))[1:]))
@@ -61,8 +58,8 @@ def cli():
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Handle arguments.
-    url = args["<URL>"]
-    datapath = args["<DATA>"]
+    url = args["<url>"]
+    datapath = args["<data>"]
 
     # Handle optional arguments.
     count = int(args["--count"]) if args["--count"] else 1

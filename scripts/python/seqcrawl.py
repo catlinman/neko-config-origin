@@ -3,26 +3,22 @@
 
 """Seqcrawl
 Usage:
-    seqcrawl.py --url=URL --chars=CHARS --length=LENGTH
-                [--begin=BEGIN]
-                [--end=END]
-                [--out=OUT]
-                [--sleep=SLEEP]
+    seqcrawl.py <url> <characters> <length>
+                [--start <number>]
+                [--end <number>]
+                [--out <path>]
+                [--sleep <number>]
     seqcrawl.py (-h | --help)
     seqcrawl.py (-v | --version)
 
 Options:
-    -h --help               Show this screen.
-    -v --version            Show version.
+    -h --help         Show this screen.
+    -v --version      Show version.
 
-    -u --url=<URL>          Entry point URL to use.
-    -c --chars=<CHARS>      Character set to use for generation of sequences.
-    -l --length=<LENGTH>    Length of generated character sequences.
-
-    -b --begin<BEGIN>       Sequence generation iteration to begin at.
-    -e --end<END>           Optional sequence generation iteration to complete at.
-    -o --out<OUT>           Optional log file to write information to.
-    -s --sleep<SLEEP>       Optional time between crawl requests to sleep.
+    --start <number>  Sequence generation iteration to start at.
+    --end <number>    Sequence generation iteration to complete at.
+    --out <path>      Log file to write information to.
+    --sleep <number>  Time between crawl requests to sleep.
 
 Description:
     Crawls an entry point URL using generated fixed length sequences from an
@@ -42,22 +38,22 @@ from datetime import datetime
 
 
 def cli():
-    args = docopt(__doc__, version="Seqcrawl 0.1")
+    args = docopt(__doc__, version="Seqcrawl 0.2")
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Handle arguments.
-    url = args["--url"]
-    chars = args["--chars"]
-    length = args["--length"]
+    url = args["<url>"]
+    chars = args["<characters>"]
+    length = args["<length>"]
 
     # Handle optional arguments.
-    begin = args["--begin"] or 0
+    start = args["--start"] or 0
     end = args["--end"] or False
     sleep = args["--sleep"] or 1.5
     out = args["--out"] or False
 
     try:
-        txt = crawl(baseurl=url, iteration=int(begin), iteration_end=end, setchars=chars, set_length=int(length), sleep_time=float(sleep))
+        txt = crawl(baseurl=url, iteration=int(start), iteration_end=end, set_chars=chars, set_length=int(length), sleep_time=float(sleep))
 
         # Print information about the current execution of the script.
         print(txt)
@@ -72,7 +68,7 @@ def cli():
 
 
 def sizeofh(num, suffix="B"):
-    '''
+    """
     Generate a human readable sizeof format.
 
     Args:
@@ -81,7 +77,7 @@ def sizeofh(num, suffix="B"):
 
     Returns:
         String containing the correctly formatted sizeof.
-    '''
+    """
 
     for unit in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
         if abs(num) < 1024.0:
@@ -91,66 +87,69 @@ def sizeofh(num, suffix="B"):
     return "%.1f%s%s" % (num, 'Yi', suffix)
 
 
-def generate(setchars, set_length, iteration=0):
-    '''
+def generate(set_chars, set_length, iteration=0):
+    """
     Generates a set length sequence of characters from an input character set
     based on an input iteration.
 
     Args:
-        setchars (str): input character set to construct further sets from.
+        set_chars (str): input character set to construct further sets from.
         set_length (int): length of the character set to output and generate.
         iteration (int): current iteration of the construction algorithm.
 
     Returns:
         The generated character sequence.
-    '''
+    """
 
     s = ""  # Current selection from the input character set.
 
     # Number of characters in the character set.
-    charcount = len(setchars)
+    charcount = len(set_chars)
 
     # Iterate over the desired length of the output combination and generate the combination.
     for i in range(0, set_length):
-        s = s + setchars[int((iteration / pow(charcount, set_length - i - 1)) % charcount)]
+        char = setchars[int((iteration / pow(charcount, set_length - i - 1)) % charcount)]
+
+        if char is not " ":
+            s = s + char
 
     return s
 
 
-def crawl(baseurl, setchars, set_length, iteration=0, iteration_end=False, sleep_time=1.5):
-    '''
+def crawl(baseurl, set_chars, set_length, iteration_start=0, iteration_end=False, sleep_time=1.5):
+    """
     Crawls an input URL entry point by iterating over fixed length combinations
     of an input character set.
 
     Args:
         baseurl (str): entry point URL to base further connections off of.
-        setchars (str): input character set to construct further sets from.
+        set_chars (str): input character set to construct further sets from.
         set_length (int): length of the character set to output and generate.
-        iteration (int): current iteration of the construction algorithm.
+        iteration_start (int): current iteration of the construction algorithm.
         iteration_end (int): optional iteration to complete at.
         sleep_time (number): sleep time between requests to avoid spamming.
-    '''
+    """
 
     totalsize = 0
     totalcount = 0
 
     # Number of characters in the character set.
-    charcount = len(setchars)
+    charcount = len(set_chars)
 
-    iteration_begin = iteration
-    iteration_max = int(iteration_end) if iteration_end else pow(charcount, set_length)
+    iteration = 0
+    iteration_end = int(iteration_end) if iteration_end else pow(charcount, set_length)
 
     # Get the current time for the timeout calculation.
     time_last = datetime.now()
 
-    # begin iterating until we reach the max iterations.
-    while iteration < iteration_max:
+    # Start iterating until we reach the max iterations.
+    while iteration < iteration_end:
         # Skip iterations if we are catching up.
-        if iteration < iteration_begin:
+        if iteration < iteration_start:
             continue
 
         # Generate the current set.
-        selection = generate(setchars, set_length, iteration)
+        selection = generate(set_chars, set_length, iteration)
 
         # Current iteration step.
         iteration = iteration + 1
@@ -181,7 +180,7 @@ def crawl(baseurl, setchars, set_length, iteration=0, iteration_end=False, sleep
         totalcount = totalcount + 1
         totalsize = totalsize + len(data.content)
 
-    return "{} | Range: {} - {} | Total files: {} | Total size: {}\n".format(datetime.now(), iteration_begin + 1, iteration, totalcount, sizeofh(totalsize))
+    return "{} | Range: {} - {} | Total files: {} | Total size: {}\n".format(datetime.now(), iteration_start + 1, iteration, totalcount, sizeofh(totalsize))
 
 
 if __name__ == "__main__":

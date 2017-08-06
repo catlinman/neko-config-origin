@@ -14,7 +14,7 @@ import datetime
 
 
 def make_safe(string):
-    return re.sub('[:*?<>|]', "", string).replace("/", "").replace("\\", "")
+    return re.sub("[:*?<>|]", "", string).replace("/", "").replace("\\", "")
 
 if __name__ == "__main__":
     dircount = 0
