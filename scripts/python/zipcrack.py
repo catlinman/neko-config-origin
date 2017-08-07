@@ -7,16 +7,18 @@ Usage:
                 [--iteration-start=NUMBER]
                 [--iteration-end=NUMBER]
                 [--sleep=NUMBER]
+                [--output=PATH]
     zipcrack.py (-h | --help)
     zipcrack.py (-v | --version)
 
 Options:
-    -h --help       Show this screen.
-    -v --version    Show version.
+    -h --help                 Show this screen.
+    -v --version              Show version.
 
     --iteration-start=NUMBER  Iteration to start at.
     --iteration-end=NUMBER    Iteration to complete at.
     --sleep=NUMBER            Time between attempts to sleep.
+    --output=PATH             Output directory to extract to.
 
 Description:
     Generates character sequences to brute force crack a zip archive.
@@ -36,7 +38,7 @@ from datetime import datetime
 
 
 def cli():
-    args = docopt(__doc__, version="Zipcrack 0.1")
+    args = docopt(__doc__, version="Zipcrack 0.2")
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Handle arguments.
@@ -53,11 +55,13 @@ def cli():
     begin = args["--iteration-start"] or 0
     end = args["--iteration-end"] or False
     sleep = args["--sleep"] or 0
+    output = args["--output"] or os.path.dirname(os.path.realpath(__file__))
 
     try:
         if chars:
             crack_sequence(
                 filepath=filepath,
+                outpath=output,
                 set_chars=chars,
                 set_length=int(length),
                 iteration_start=int(begin),
@@ -68,6 +72,7 @@ def cli():
         if dictionary:
             crack_dictionary(
                 filepath=filepath,
+                outpath=output,
                 dictpath=dictionary,
                 iteration_start=int(begin),
                 iteration_end=end,
@@ -106,7 +111,7 @@ def generate_sequence(set_chars, set_length, iteration=0):
     return s
 
 
-def crack_sequence(filepath, set_chars, set_length, iteration_start=0, iteration_end=False, sleep_time=0):
+def crack_sequence(filepath, outpath, set_chars, set_length, iteration_start=0, iteration_end=False, sleep_time=0):
     """
     Attempts to use generated character sequences from an input sequence to
     crack a zip archive's password.
@@ -152,19 +157,22 @@ def crack_sequence(filepath, set_chars, set_length, iteration_start=0, iteration
         if time_elapsed < sleep_time:
             time.sleep(sleep_time - time_elapsed)
 
+        # Store the current time for the next loop.
+        time_last = datetime.now()
+
         try:
-            zip_file.extractall(pwd=password)
+            zip_file.extractall(outpath, pwd=password.encode("utf-8", "replace"))
 
             print("Password found: {}".format(password))
             return
 
         except:
-            print("{}. {}\r".format(iteration, password), end="", flush=False)
+            print("{}. {}\033[K\r".format(iteration, password), end="", flush=False)
 
     print("\nPassword not found.")
 
 
-def crack_dictionary(filepath, dictpath, iteration_start=0, iteration_end=False, sleep_time=0):
+def crack_dictionary(filepath, outpath, dictpath, iteration_start=0, iteration_end=False, sleep_time=0):
     """
     Attempts to use lines from a dictionary file to crack a zip archive's password.
 
@@ -207,14 +215,17 @@ def crack_dictionary(filepath, dictpath, iteration_start=0, iteration_end=False,
             if time_elapsed < sleep_time:
                 time.sleep(sleep_time - time_elapsed)
 
+            # Store the current time for the next loop.
+            time_last = datetime.now()
+
             try:
-                zip_file.extractall(pwd=password)
+                zip_file.extractall(outpath, pwd=password.encode("utf-8", "replace"))
 
                 print("Password found: {}".format(password))
                 return
 
             except:
-                print("{}. {}\r".format(iteration, password), end="", flush=False)
+                print("{}. {}\033[K\r".format(iteration, password), end="", flush=False)
 
         print("\nPassword not found.")
 

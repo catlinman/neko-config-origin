@@ -16,6 +16,7 @@ The repository is split into four main folders. The contents of these folders ca
 	- Terminator terminal profile configuration
 	- Postfix, Dovecot, SpamAssassin, DKIM & DMARC
 	- LetsEncrypt quick setups
+	- Adobe application workspaces
 
 
 - Scripts (scripts)

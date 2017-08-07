@@ -6,7 +6,7 @@ Usage:
     seqcrawl.py <url> <characters> <length>
                 [--start <number>]
                 [--end <number>]
-                [--out <path>]
+                [--log <path>]
                 [--sleep <number>]
     seqcrawl.py (-h | --help)
     seqcrawl.py (-v | --version)
@@ -17,7 +17,7 @@ Options:
 
     --start <number>  Sequence generation iteration to start at.
     --end <number>    Sequence generation iteration to complete at.
-    --out <path>      Log file to write information to.
+    --log <path>      Log file to write information to.
     --sleep <number>  Time between crawl requests to sleep.
 
 Description:
@@ -50,7 +50,7 @@ def cli():
     start = args["--start"] or 0
     end = args["--end"] or False
     sleep = args["--sleep"] or 1.5
-    out = args["--out"] or False
+    log = args["--log"] or False
 
     try:
         txt = crawl(baseurl=url, iteration=int(start), iteration_end=end, set_chars=chars, set_length=int(length), sleep_time=float(sleep))
@@ -58,9 +58,9 @@ def cli():
         # Print information about the current execution of the script.
         print(txt)
 
-        if out:
+        if log:
             # Log the current run in a file.
-            with open(os.path.join(script_dir, out), 'a') as f:
+            with open(os.path.join(script_dir, log), 'a') as f:
                 f.write(txt)
 
     except KeyboardInterrupt:
