@@ -39,6 +39,7 @@ if __name__ == "__main__":
         # Get the path of the current execution folder.
         folder = os.path.split(os.path.abspath(
             __file__).replace("\\", "/"))[0] + "/"
+
         name = re.findall("(?=\w+\.\w{3,4}$).+", url)[0]
 
         # Get the size of the remote file.
