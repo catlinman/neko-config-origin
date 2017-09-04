@@ -21,7 +21,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 
-if has("python")
+if has("python") || has("python3")
   Plugin 'severin-lemaignan/vim-minimap'
   Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
   Plugin 'Valloric/MatchTagAlways'
@@ -114,4 +114,4 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
-colorscheme vineko
+"colorscheme vineko"

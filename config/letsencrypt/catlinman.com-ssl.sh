@@ -1,5 +1,5 @@
 
-/etc/init.d/nginx stop # Stop the nginx server as it is listening on port 80 which is used by standalone verification.
+systemctl stop nginx.service # Stop the nginx server as it is listening on port 80 which is used by standalone verification.
 
 certbot certonly --expand --renew-by-default --standalone \
 	-d catlinman.com \
@@ -21,9 +21,8 @@ certbot certonly --expand --renew-by-default --standalone \
 	-d googleplus.catlinman.com \
 	-d cloud.catlinman.com
 
-/etc/init.d/nginx start # Restart the nginx server.
+systemctl start nginx.service # Restart the nginx server.
 
 # ZNC certificate transfer.
 cat /etc/letsencrypt/live/catlinman.com/privkey.pem > ../.znc/znc.pem
 cat /etc/letsencrypt/live/catlinman.com/cert.pem >> ../.znc/znc.pem
-

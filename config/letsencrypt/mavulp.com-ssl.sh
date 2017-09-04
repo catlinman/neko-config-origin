@@ -1,5 +1,5 @@
 
-nginx -s stop # Stop the nginx server as it is listening on port 80 which is used by standalone verification.
+systemctl stop nginx.service # Stop the nginx server as it is listening on port 80 which is used by standalone verification.
 
 letsencrypt certonly --expand --allow-subset-of-names --renew-by-default -a standalone \
 	-d mavulp.com \
@@ -7,4 +7,4 @@ letsencrypt certonly --expand --allow-subset-of-names --renew-by-default -a stan
 	-d dev.mavulp.com \
 	-d roflbox.mavulp.com
 
-nginx # Restart the nginx server.
+systemctl start nginx.service # Restart the nginx server.

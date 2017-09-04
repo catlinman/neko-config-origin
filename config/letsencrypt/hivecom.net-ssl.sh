@@ -1,5 +1,5 @@
 
-/etc/init.d/nginx stop # Stop the nginx server as it is listening on port 80 which is used by standalone verification.
+systemctl stop nginx.service # Stop the nginx server as it is listening on port 80 which is used by standalone verification.
 
 certbot certonly --expand --renew-by-default --standalone \
 	-d hivecom.net \
@@ -8,5 +8,4 @@ certbot certonly --expand --renew-by-default --standalone \
 	-d ts.hivecom.net \
 	-d dc.hivecom.net
 
-/etc/init.d/nginx start # Restart the nginx server.
-
+systemctl start nginx.service # Restart the nginx server.
