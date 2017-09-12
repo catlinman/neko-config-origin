@@ -15,8 +15,10 @@ The repository is split into four main folders. The contents of these folders ca
 	- i3 window manager configuration files
 	- Terminator terminal profile configuration
 	- Postfix, Dovecot, SpamAssassin, DKIM & DMARC
-	- LetsEncrypt quick setups
+	- LetsEncrypt quick setups and systemd service
 	- Adobe application workspaces
+    - nginx configuration
+    - Syncplay systemd service
 
 
 - Scripts (scripts)
@@ -39,6 +41,7 @@ The repository is split into four main folders. The contents of these folders ca
 
 - Random trash and testing (garble)
 	- Won't be listing anything about this because it's not important.
+    - Mostly deprecated as I switched to Processing for these kinds of things.
 
 For a full listing as well as further information please take a look at the
 README.md files in the given subfolders.

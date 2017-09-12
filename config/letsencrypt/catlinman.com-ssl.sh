@@ -5,7 +5,6 @@ certbot certonly --expand --renew-by-default --standalone \
 	-d catlinman.com \
 	-d www.catlinman.com \
 	-d dev.catlinman.com \
-	-d znc.catlinman.com \
 	-d cloud.catlinman.com \
 	-d ask.catlinman.com \
 	-d twitter.catlinman.com \
@@ -19,10 +18,6 @@ certbot certonly --expand --renew-by-default --standalone \
 	-d deviantart.catlinman.com \
 	-d github.catlinman.com \
 	-d googleplus.catlinman.com \
-	-d cloud.catlinman.com
+	-d legacy.catlinman.com
 
 systemctl start nginx.service # Restart the nginx server.
-
-# ZNC certificate transfer.
-cat /etc/letsencrypt/live/catlinman.com/privkey.pem > ../.znc/znc.pem
-cat /etc/letsencrypt/live/catlinman.com/cert.pem >> ../.znc/znc.pem

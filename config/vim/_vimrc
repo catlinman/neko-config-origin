@@ -47,9 +47,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 
 if has("python")
-  "Plugin 'severin-lemaignan/vim-minimap'
-  "Plugin 'Valloric/YouCompleteMe'
-  Plugin 'Valloric/MatchTagAlways'
+    "Plugin 'severin-lemaignan/vim-minimap'
+    "Plugin 'Valloric/YouCompleteMe'
+    Plugin 'Valloric/MatchTagAlways'
 endif
 
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -124,18 +124,16 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "wombat"
 
 if has('gui_running')
-  set guioptions-=T  " no toolbar
+    set guioptions-=T  " no toolbar
 
-  if has('gui_win32')
-    set guifont=Inconsolata_for_Powerline:h11:cANSI
-  else
-    set guifont=Inconsolata\ for\ Powerline\ 11
-  endif
+    if has('gui_win32')
+        set guifont=Inconsolata_for_Powerline:h11:cANSI
+    else
+        set guifont=Inconsolata\ for\ Powerline\ 11
+    endif
 endif
 
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-
-colorscheme vineko

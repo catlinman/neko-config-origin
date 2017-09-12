@@ -20,11 +20,15 @@ Plugin 'Lokaltog/powerline-fonts' "requires the powerline fonts to be installed 
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'ap/vim-css-color'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'majutsushi/tagbar'
+Plugin 'Chiel92/vim-autoformat'
 
 if has("python") || has("python3")
-  Plugin 'severin-lemaignan/vim-minimap'
-  Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
-  Plugin 'Valloric/MatchTagAlways'
+    Plugin 'severin-lemaignan/vim-minimap'
+    Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
+    Plugin 'Valloric/MatchTagAlways'
 endif
 
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -62,14 +66,23 @@ inoremap kj <ESC>
 
 map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>y
 
+" Use soft tabs with width of 4 spaces.
 set tabstop=4
-set noexpandtab
+set expandtab
 set shiftwidth=4
 set autoindent
 set softtabstop=4
 
+" Change backspace behavior.
+set backspace=indent,eol,start
+
 set background=dark
 set number
+
+" Enable highlighted searching. Press space to disable highlighting.
+set hlsearch
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
 set t_Co=256
 set laststatus=2
 set ttimeoutlen=50
@@ -79,8 +92,6 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-
-set background=dark
 
 syntax on
 filetype indent plugin on
@@ -100,18 +111,17 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "wombat"
 
 if has('gui_running')
-  set guioptions-=T  " no toolbar
+    set guioptions-=T  " no toolbar
 
-  if has('gui_win32')
-    set guifont=Inconsolata_for_Powerline:h9:cANSI
-  else
-    set guifont=Inconsolata\ for\ Powerline\ 9
-  endif
+    if has('gui_win32')
+        set guifont=Inconsolata_for_Powerline:h9:cANSI
+    else
+        set guifont=Inconsolata\ for\ Powerline\ 9
+    endif
 endif
 
+" Airline configuration.
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-
-"colorscheme vineko"
