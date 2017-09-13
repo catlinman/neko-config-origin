@@ -1,9 +1,0 @@
-
-# /etc/opendkim/TrustedHosts
-
-127.0.0.1
-{FQDN}
-localhost
-192.168.0.1/24
-
-*.{DN}

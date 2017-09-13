@@ -8,6 +8,12 @@
 # is /etc/mailname.
 #myorigin = /etc/mailname
 
+# Disable backwards compatability.
+compatibility_level = 2
+
+# SPF policy time limit.
+policy-spf_time_limit = 3600s
+
 smtpd_banner = $myhostname ESMTP $mail_name
 biff = no
 
@@ -20,37 +26,39 @@ append_dot_mydomain = no
 readme_directory = no
 
 # TLS parameters using Let's Encrypt
-smtpd_tls_cert_file=/etc/letsencrypt/live/{DN}/fullchain.pem
-smtpd_tls_key_file=/etc/letsencrypt/live/{DN}/privkey.pem
-smtpd_use_tls=yes
+smtpd_tls_exclude_ciphers = aNULL, eNULL, EXPORT, DES, RC4, MD5, PSK, aECDH, EDH-DSS-DES-CBC3-SHA, EDH-RSA-DES-CBC3-SHA, KRB5-DES, CBC3-SHA
+smtpd_tls_cert_file = /etc/letsencrypt/live/nekodrop.com/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/nekodrop.com/privkey.pem
+smtpd_tls_dh1024_param_file = /etc/ssl/certs/dhparam.pem
+smtpd_use_tls = yes
 smtpd_tls_auth_only = yes
-smtp_tls_policy_maps = hash:/etc/postfix/tls_policy
-smtp_tls_security_level = may
-smtpd_tls_security_level = may
+smtpd_tls_security_level = encrypt
+smtp_tls_security_level = encrypt
 
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
 smtpd_sasl_auth_enable = yes
 
 smtpd_recipient_restrictions =
-        permit_sasl_authenticated,
-		permit_mynetworks,
-        reject_unauth_destination
+    permit_sasl_authenticated
+    permit_mynetworks
+    reject_unauth_destination
+    check_policy_service unix:private/policy-spf
 
 smtpd_relay_restrictions =
-	permit_mynetworks,
+	permit_mynetworks
 	permit_sasl_authenticated
 	reject_unauth_destination
 
-smtpd_sender_restrictions = reject_unknown_sender_domain
+# smtpd_sender_restrictions = reject_unknown_sender_domain
 
 # See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
 # information on enabling SSL in the smtp client.
 
 myhostname = {FQDN}
-alias_maps = hash:/etc/aliases
-alias_database = hash:/etc/aliases
-myorigin = /etc/mailname
+alias_maps = hash:/etc/postfix/aliases
+alias_database = hash:/etc/postfix/aliases
+myorigin = {FQDN}
 mydestination = localhost
 relayhost =
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
@@ -70,5 +78,6 @@ milter_protocol = 6
 milter_default_action = tempfail
 
 # DKIM
-smtpd_milters = inet:localhost:12301, inet:localhost:54321
-non_smtpd_milters = inet:localhost:12301, inet:localhost:54321
+non_smtpd_milters=inet:127.0.0.1:8891
+smtpd_milters=inet:127.0.0.1:8891
+
