@@ -74,7 +74,7 @@ filetype plugin indent on
 set background=dark
 set t_Co=256
 let base16colorspace=256
-colorscheme base16-default-dark
+colorscheme base16-seti-ui
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -94,9 +94,6 @@ set softtabstop=4
 " Change backspace behavior.
 set backspace=indent,eol,start
 
-" Enable line numbers.
-set number
-
 " Enable highlighted searching. Press space to disable highlighting.
 set hlsearch
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
@@ -112,6 +109,10 @@ set guioptions-=L  "remove left-hand scroll bar
 
 syntax on
 filetype indent plugin on
+
+" Enable line numbers.
+set number
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 let g:mta_filetypes = {
     \ 'html' : 1,

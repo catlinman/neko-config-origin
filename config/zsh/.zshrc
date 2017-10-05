@@ -89,7 +89,7 @@ bindkey "[C" forward-word
 bindkey "[D" backward-word
 
 # Base16 Shell support. Install via: git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-# Don't forget to set your theme via base16 and tab completion. I personally use base16_default-dark.
+# Don't forget to set your theme via base16 and tab completion. I personally use base16_seti-ui.
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 

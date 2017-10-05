@@ -12,6 +12,7 @@ The repository is split into four main folders. The contents of these folders ca
 	- Blender startup and configuration file
 	- Rainmeter layout configuration file
 	- Both Unix Vim (.vimrc) and Windows gVim (_vimrc) configuration files
+	- cmder setup with mintty and wsltty running zsh
 	- i3 window manager configuration files
 	- Terminator terminal profile configuration
 	- Postfix, Dovecot, SpamAssassin, DKIM & DMARC
