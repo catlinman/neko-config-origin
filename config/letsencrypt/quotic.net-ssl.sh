@@ -7,3 +7,4 @@ certbot certonly --standalone --renew-by-default --expand \
 	-d dev.quotic.net
 
 systemctl start nginx.service # Restart the nginx server.
+

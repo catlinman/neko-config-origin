@@ -8,3 +8,4 @@ letsencrypt certonly --expand --allow-subset-of-names --renew-by-default -a stan
 	-d roflbox.mavulp.com
 
 systemctl start nginx.service # Restart the nginx server.
+

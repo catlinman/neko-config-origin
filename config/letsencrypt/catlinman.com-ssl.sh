@@ -21,3 +21,4 @@ certbot certonly --expand --renew-by-default --standalone \
 	-d legacy.catlinman.com
 
 systemctl start nginx.service # Restart the nginx server.
+

@@ -7,3 +7,4 @@ certbot certonly --standalone --renew-by-default --expand \
 	-d alpha.nekodrop.com
 
 systemctl start nginx.service # Restart the nginx server.
+

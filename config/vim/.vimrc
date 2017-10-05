@@ -1,18 +1,36 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
+" Required settings.
+set nocompatible
+filetype off
+
+" ###    GENERAL VUNDLE INFORMATION     ###
+" 
+" Install Vundle before doing anything else.
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
+" Once you have installed Vundle you can run the following command.
+" vim +PluginInstall +qall
+"
+" Alternatively you can run the following command inside of vim.
+" :PluginInstall
+"
+" ###                                   ###
+
+" Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
+" Begin the Vundle plugin preparation.
+call vundle#begin()
+
+" Alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+" Let Vundle manage Vundle, required.
 Plugin 'gmarik/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -24,28 +42,22 @@ Plugin 'ap/vim-css-color'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'chriskempson/base16-vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'dhruvasagar/vim-table-mode'
 
 if has("python") || has("python3")
     Plugin 'severin-lemaignan/vim-minimap'
-    Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
+     "Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
     Plugin 'Valloric/MatchTagAlways'
 endif
 
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
+" All of your Plugins must be added before the following line.
+call vundle#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" Required setting.
+filetype plugin indent on
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -57,6 +69,12 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" Set the Base16 colorscheme. Make sure that Base16 Shell is installed.
+set background=dark
+set t_Co=256
+let base16colorspace=256
+colorscheme base16-default-dark
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -76,14 +94,13 @@ set softtabstop=4
 " Change backspace behavior.
 set backspace=indent,eol,start
 
-set background=dark
+" Enable line numbers.
 set number
 
 " Enable highlighted searching. Press space to disable highlighting.
 set hlsearch
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-set t_Co=256
 set laststatus=2
 set ttimeoutlen=50
 set encoding=utf-8
@@ -125,3 +142,9 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
+
+" Indent guide configuration.
+let g:indent_guides_guide_size = 1
+let g:indent_guides_color_change_percent = 0
+let g:indent_guides_enable_on_vim_startup = 1
+

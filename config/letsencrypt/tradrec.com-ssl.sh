@@ -7,3 +7,4 @@ certbot certonly --expand --renew-by-default --standalone \
 	-d dev.tradrec.com
 
 systemctl start nginx.service # Restart the nginx server.
+
