@@ -31,24 +31,38 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
-Plugin 'tpope/vim-fugitive'
+" Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Lokaltog/powerline-fonts' "requires the powerline fonts to be installed and activated
+
+" Color scheme
+Plugin 'chriskempson/base16-vim'
+
+" Navigation and highlighting (Implements 'TagbarToggle')
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ap/vim-css-color'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'chriskempson/base16-vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'dhruvasagar/vim-table-mode'
 
+" Git
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+" Formatting & Linting (Implements 'ALEToggle')
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'w0rp/ale'
+
+" Snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+" Python dependent plugins (Implements 'MinimapToggle')
 if has("python") || has("python3")
     Plugin 'severin-lemaignan/vim-minimap'
-     "Plugin 'valloric/YouCompleteMe' "requires running ../install.sh
     Plugin 'Valloric/MatchTagAlways'
 endif
 
@@ -58,8 +72,7 @@ call vundle#end()
 " Required setting.
 filetype plugin indent on
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+" To ignore plugin indent changes, instead use: filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -71,6 +84,7 @@ filetype plugin indent on
 " Put your non-Plugin stuff after this line
 
 " Set the Base16 colorscheme. Make sure that Base16 Shell is installed.
+syntax on
 set background=dark
 set t_Co=256
 let base16colorspace=256
@@ -81,8 +95,6 @@ cmap w!! w !sudo tee > /dev/null %
 
 inoremap jk <ESC>
 inoremap kj <ESC>
-
-map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>y
 
 " Use soft tabs with width of 4 spaces.
 set tabstop=4
@@ -102,15 +114,9 @@ set laststatus=2
 set ttimeoutlen=50
 set encoding=utf-8
 
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-
-syntax on
 filetype indent plugin on
 
-" Enable line numbers.
+" Line numbers.
 set number
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
@@ -124,12 +130,14 @@ let g:mta_filetypes = {
 
 highlight Pmenu ctermfg=blue ctermbg=black
 
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = "wombat"
-
+" gVim configuration.
 if has('gui_running')
-    set guioptions-=T  " no toolbar
+    map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>y
+
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
 
     if has('gui_win32')
         set guifont=Inconsolata_for_Powerline:h9:cANSI
@@ -142,10 +150,19 @@ endif
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+
 let g:airline_symbols.space = "\ua0"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = "wombat"
 
 " Indent guide configuration.
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 0
 let g:indent_guides_enable_on_vim_startup = 1
+
+" Snippet configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
