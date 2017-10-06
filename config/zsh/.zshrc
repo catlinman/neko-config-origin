@@ -51,9 +51,12 @@ HIST_STAMPS="dd.mm.yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-256color command-time)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-256color command-time zsh-syntax-highlighting-filetypes)
 
 source $ZSH/oh-my-zsh.sh
+
+# Load custom aliases from a designated file.
+source $HOME/.aliases
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -92,4 +95,10 @@ bindkey "[D" backward-word
 # Don't forget to set your theme via base16 and tab completion. I personally use base16_seti-ui.
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# Custom dircolors setup. Download: wget https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS -O $HOME/.dircolors
+eval $( dircolors -b $HOME/.dircolors )
+
+# Colored completion - use LS_COLORS.
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
