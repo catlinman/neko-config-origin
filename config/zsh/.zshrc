@@ -56,7 +56,18 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-256color command-ti
 source $ZSH/oh-my-zsh.sh
 
 # Load custom aliases from a designated file.
-source $HOME/.aliases
+if [[ ! -a $HOME/.zsh_aliases ]]; then
+    touch $HOME/.zsh_aliases
+else
+    source $HOME/.zsh_aliases
+fi
+
+# Load custom paths from a desginated file.
+if [[ ! -a $HOME/.zsh_path ]]; then
+    touch $HOME/.zsh_path
+else
+    source $HOME/.zsh_path
+fi
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"

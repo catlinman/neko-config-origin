@@ -60,6 +60,9 @@ Plugin 'w0rp/ale'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
+" Languages
+Plugin 'rust-lang/rust.vim'
+
 " Python dependent plugins (Implements 'MinimapToggle')
 if has("python") || has("python3")
     Plugin 'severin-lemaignan/vim-minimap'
