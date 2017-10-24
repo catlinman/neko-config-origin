@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Quick command to check if a program exists.
+exists() { [ ! -z `which "$1"` ]; }
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -113,3 +116,8 @@ eval $( dircolors -b $HOME/.dircolors )
 # Colored completion - use LS_COLORS.
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# Replace default ls commands with exa's.
+if exists exa; then
+    alias ls="exa"
+    alias la="exa -laagh --git"
+fi
