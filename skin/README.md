@@ -6,30 +6,30 @@ This folder mainly contains application skins and color schemes.
 
 **Subneko Sublime theme**
 
-![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/subneko.png)
+![](https://github.com/catlinman/neko-config-origin/blob/master/screenshots/subneko.png)
 
 **Vineko Vim color scheme**
 
-![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/vineko.png)
+![](https://github.com/catlinman/neko-config-origin/blob/master/screenshots/vineko.png)
 
 **Nekoflash FlashDevelop theme**
 
-![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/nekoflash.png)
+![](https://github.com/catlinman/neko-config-origin/blob/master/screenshots/nekoflash.png)
 
 **HexCat HexChat Skin**
-![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/hexcat.png)
+![](https://github.com/catlinman/neko-config-origin/blob/master/screenshots/hexcat.png)
 
 **Hivecom Teamspeak skin**
 
-![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/hivecom.png)
+![](https://github.com/catlinman/neko-config-origin/blob/master/screenshots/hivecom.png)
 
 **Nekobeat Osu! skin**
 
-![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/nekobeat.png)
+![](https://github.com/catlinman/neko-config-origin/blob/master/screenshots/nekobeat.png)
 
 **MonoNeko MonoDevelop theme**
 
-![](https://github.com/catlinman/nekoconfig/blob/master/screenshots/mononeko.png)
+![](https://github.com/catlinman/neko-config-origin/blob/master/screenshots/mononeko.png)
 
 ## Additional information ##
 
